@@ -1,3 +1,4 @@
+import { AuthBar } from './ui/AuthBar.tsx'
 import { useSolver } from './ui/useSolver.ts'
 import { ResultsScreen } from './ui/ResultsScreen.tsx'
 import { SolvingScreen } from './ui/SolvingScreen.tsx'
@@ -9,6 +10,7 @@ export default function App() {
 
   return (
     <main className={playing ? 'page page--play' : 'page'}>
+      <AuthBar />
       <header className="masthead">
         <p className="eyebrow">Fifteen holes</p>
         <h1>Pegs</h1>

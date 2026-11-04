@@ -46,3 +46,19 @@ Required GitHub repository **secrets** (Settings → Secrets and variables → A
 | `AZURE_SUBSCRIPTION_ID` | Subscription that contains the `pegs2` resource group |
 
 The managed identity needs the **Contributor** role on the `pegs2` resource group.
+
+## Sign-in (Okta)
+
+Sign-in is optional: the puzzle is public, and a **Sign in** button in the
+top-right signs in with Okta (OIDC Authorization Code + PKCE, no client secret).
+
+- Okta org: `integrator-8597893.okta.com`, default authorization server
+- App: `pegs2` (Single-Page Application), client ID `0oa19hgcbxcQB4S52698`
+- Callback: `/login/callback`. Sign-in redirect URIs, sign-out URIs, and
+  Trusted Origins (CORS) are registered for `https://pegs2.korzaan.com`,
+  `https://witty-stone-022e76f0f.6.azurestaticapps.net`, and
+  `http://localhost:5173` (`npm run dev`).
+- Override with `VITE_OKTA_ISSUER` / `VITE_OKTA_CLIENT_ID` at build time.
+
+Code: `src/auth/okta.ts` (client + redirect handling), `src/auth/useAuth.ts`,
+`src/ui/AuthBar.tsx`.
