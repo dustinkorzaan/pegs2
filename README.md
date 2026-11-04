@@ -59,6 +59,11 @@ top-right signs in with Okta (OIDC Authorization Code + PKCE, no client secret).
   `https://witty-stone-022e76f0f.6.azurestaticapps.net`, and
   `http://localhost:5173` (`npm run dev`).
 - Override with `VITE_OKTA_ISSUER` / `VITE_OKTA_CLIENT_ID` at build time.
+- The `default` authorization server needs an **access policy** for the
+  `pegs2` client (rule: Authorization Code grant, any user assigned the app,
+  any scopes). Without it Okta denies sign-in with `no_matching_policy`.
+- The app uses Federation Broker Mode, so access is controlled by the app's
+  sign-on policy rather than assignments.
 
 Code: `src/auth/okta.ts` (client + redirect handling), `src/auth/useAuth.ts`,
 `src/ui/AuthBar.tsx`.
