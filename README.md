@@ -37,9 +37,9 @@ Hosted on Azure Static Web Apps in the `pegs2` resource group.
 - Azure login uses OIDC with the user-assigned managed identity
   `pegs2-gh-actions`, through the `production` GitHub environment.
 
-Required GitHub repository **variables** (Settings → Secrets and variables → Actions → Variables):
+Required GitHub repository **secrets** (Settings → Secrets and variables → Actions → Secrets):
 
-| Variable | Value |
+| Secret | Value |
 | --- | --- |
 | `AZURE_CLIENT_ID` | Client ID of managed identity `pegs2-gh-actions` |
 | `AZURE_TENANT_ID` | Microsoft Entra tenant ID |
